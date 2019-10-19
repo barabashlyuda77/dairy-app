@@ -1,0 +1,12 @@
+@import '../../variables';
+
+.add-button-wrapper {
+  background-color: $color-turquoise;
+  border-radius: 4px;
+
+  .button-text {
+    color: $color-white;
+    padding: 13px 32px;
+    font-size: 14px;
+  }
+}
