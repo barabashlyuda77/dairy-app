@@ -1,0 +1,9 @@
+@import '../../variables';
+
+.title-wrapper {
+  h1 {
+    font-weight: $font-light;
+    font-size: 32px;
+    color: $color-dark-gray;
+  }
+}
