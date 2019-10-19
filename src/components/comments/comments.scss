@@ -1,7 +1,9 @@
 @import '../../variables';
+@import '../../mixins';
 
 .comments-wrapper {
   background-color: $color-white;
   flex: 444;
   padding: 20px 18px 14px 18px;
+  @include border-decoration;
 }
