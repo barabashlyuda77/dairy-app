@@ -1,0 +1,11 @@
+@import '../../variables';
+
+.content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  width: 79%;
+  min-width: 1009px;
+  height: 100%;
+  background-color: $background-color;
+  padding: 34px 34px 34px 32px;
+}
