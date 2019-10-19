@@ -1,22 +1,39 @@
 @import '../../variables';
 
-.item-wrapper {
+.row-wrapper {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 10px 0;
-  border-bottom: 1px solid $border-color;
+  position: relative;
 
-  .text-wrapper {
+  .pink-line {
+    display: none;
+    border-left: 4px solid $color-pink;
+    position: absolute;
+    left: -34px;
+    height: 100%;
+  }
+
+  .pink-line-active {
+    display: block;
+  }
+
+  .item-wrapper {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid $border-color;
 
-    .item-text {
-      color: $color-black;
-      font-size: 14px;
-      font-weight: $font-semibold;
-      margin-right: 10px;
+    .text-wrapper {
+      display: flex;
+      align-items: center;
+
+      .item-text {
+        color: $color-black;
+        font-size: 14px;
+        font-weight: $font-semibold;
+        margin-right: 10px;
+      }
     }
   }
 }
