@@ -1,0 +1,32 @@
+@import '../../variables';
+
+.commen-wrapper {
+  display: flex;
+  padding-top: 14px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid $border-color;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .square {
+    height: 52px;
+    min-width: 52px;
+    margin-right: 14px;
+  }
+
+  .square-orange {
+    background-color: $color-orange;
+  }
+
+  .square-blue {
+    background-color: $color-dark-blue;
+  }
+
+  .comment-text{
+    color: $color-light-black;
+    font-weight: $font-light;
+    line-height: 21px;
+  }
+}
