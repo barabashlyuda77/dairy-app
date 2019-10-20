@@ -3,6 +3,8 @@
 
 .comments-wrapper {
   @include border-decoration;
+  display: flex;
+  flex-direction: column;
   background-color: $color-white;
   flex: 444;
   padding: 20px 18px 14px 18px;

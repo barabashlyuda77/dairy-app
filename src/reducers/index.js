@@ -1,4 +1,4 @@
-import { ADD_ITEM, MAKE_ACTIVE, DELETE_ITEM } from '../actions/index.js';
+import { ADD_ITEM, MAKE_ACTIVE, DELETE_ITEM, ADD_COMMENT } from '../actions/index.js';
 
 const createItem = (value) => {
   return {
@@ -30,6 +30,20 @@ const addItem = (state, action) => {
   return newState;
 }
 
+const addComment = (state, action) => {
+  const newState = state.map((item) => {
+    const newItem = {...item}
+    if (newItem.id === action.id) {
+      const comments = [...newItem.comments];
+      comments.push(action.comment)
+      newItem.comments = comments;
+    }
+    return newItem;
+  });
+  saveItemsToLocalStorage(newState);
+  return newState;
+}
+
 const initialState = getItemsFromLocalStorage();
 
 const globalReducer = (state = initialState, action) => {
@@ -44,6 +58,8 @@ const globalReducer = (state = initialState, action) => {
       });
       case DELETE_ITEM:
         return deleteItem(state, action);
+      case ADD_COMMENT:
+        return addComment(state, action);
     default:
       return state
   }
