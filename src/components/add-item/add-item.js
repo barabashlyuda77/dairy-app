@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { addItem } from '../../actions/index.js';
 
 import './add-item.scss';
 
@@ -10,38 +12,12 @@ class AddItem extends Component {
     this.textInput = React.createRef()
   }
 
-  createItem = (value) => {
-    return {
-      id: Date.now(),
-      title: value,
-      active: false,
-      comments: []
-    };
-  }
-
-  getItemsFromLocalStorage = () => {
-    const localStorageItems = localStorage.getItem('items');
-    return localStorageItems === null ? [] : JSON.parse(localStorageItems);
-  }
-
-  saveItemsToLocalStorage = (items) => {
-    localStorage.setItem('items', JSON.stringify(items));
-  }
-
-  addItemToItemsList = (title) => {
-    const items = this.getItemsFromLocalStorage();
-    const item = this.createItem(title);
-    items.push(item);
-    this.saveItemsToLocalStorage(items);
-  }
-
   clickHandler = () => {
     const title = this.textInput.current.value;
-    this.addItemToItemsList(title);
+    this.props.addItem(title);
+    this.textInput.current.value = '';
 
     console.log(JSON.parse(localStorage.getItem('items')));
-
-    //display data to item list
   }
 
   render() {
@@ -59,4 +35,6 @@ class AddItem extends Component {
   }
 }
 
-export default AddItem;
+const mapDispatchToProps = { addItem }
+
+export default connect(null, mapDispatchToProps)(AddItem);

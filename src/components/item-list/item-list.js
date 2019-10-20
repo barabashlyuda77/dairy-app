@@ -1,20 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import './item-list.scss';
 
 import Item from '../item/item.js';
 
-const ItemList = () =>{
+const ItemList = (props) => {
   return (
     <div className="item-list-wrapper">
-      <Item
-        text="First item with custom name"
-        number="132"
-        active={false}
-       />
-      <Item text="Second  item is active" number="3" active={true} />
+      {
+        props.items.map((item) => {
+          return <Item
+            text={item.title}
+            number={item.comments.length}
+            active={item.active}
+            key={item.id}
+           />
+        })
+      }
     </div>
   );
 }
 
-export default ItemList;
+const mapStateToProps = (state) => {
+  return {
+    items: state
+  }
+}
+
+export default connect(mapStateToProps)(ItemList);
