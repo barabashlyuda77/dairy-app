@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { makeActive } from '../../actions/index.js';
+import { makeActive, deleteItem } from '../../actions/index.js';
 import classNames from 'classnames';
 
 import './item.scss';
@@ -18,20 +18,24 @@ const Item = (props) => {
     props.makeActive(props.id);
   }
 
+  const deleteHandler = () => {
+    props.deleteItem(props.id);
+  }
+
   return (
-    <div className="row-wrapper">
+    <div className="row-wrapper" onClick={clickHandler}>
       <div className={lineClass}></div>
       <div className="item-wrapper">
-        <div className="text-wrapper" onClick={clickHandler}>
+        <div className="text-wrapper">
           <p className="item-text">{props.text}</p>
           <Number number={props.number} />
         </div>
-        <DeleteButton text="Delete" />
+        <DeleteButton text="Delete" onClick={deleteHandler} />
       </div>
     </div>
   );
 }
 
-const mapDispatchToProps = { makeActive };
+const mapDispatchToProps = { makeActive, deleteItem };
 
 export default connect(null, mapDispatchToProps)(Item);

@@ -1,4 +1,4 @@
-import { ADD_ITEM, MAKE_ACTIVE } from '../actions/index.js';
+import { ADD_ITEM, MAKE_ACTIVE, DELETE_ITEM } from '../actions/index.js';
 
 const createItem = (value) => {
   return {
@@ -18,20 +18,32 @@ const getItemsFromLocalStorage = () => {
   return localStorageItems === null ? [] : JSON.parse(localStorageItems);
 }
 
+const deleteItem = (state, action) => {
+  const newState = state.filter((item) => item.id !== action.id);
+  saveItemsToLocalStorage(newState);
+  return newState;
+}
+
+const addItem = (state, action) => {
+  const newState = [...state, createItem(action.title)]
+  saveItemsToLocalStorage(newState);
+  return newState;
+}
+
 const initialState = getItemsFromLocalStorage();
 
 const globalReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ITEM:
-      const newState = [...state, createItem(action.title)]
-      saveItemsToLocalStorage(newState);
-      return newState;
+      return addItem(state, action);
     case MAKE_ACTIVE:
       return state.map((item) => {
         const newItem = {...item};
         newItem.active = newItem.id === action.id;
         return newItem;
       });
+      case DELETE_ITEM:
+        return deleteItem(state, action);
     default:
       return state
   }

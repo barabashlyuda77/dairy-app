@@ -3,6 +3,7 @@
 .row-wrapper {
   display: flex;
   position: relative;
+  cursor: pointer;
 
   .pink-line {
     display: none;
@@ -33,7 +34,6 @@
         font-size: 14px;
         font-weight: $font-semibold;
         margin-right: 10px;
-        cursor: pointer;
       }
     }
   }
