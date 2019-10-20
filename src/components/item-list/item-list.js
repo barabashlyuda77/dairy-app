@@ -14,6 +14,7 @@ const ItemList = (props) => {
             text={item.title}
             number={item.comments.length}
             active={item.active}
+            id={item.id}
             key={item.id}
            />
         })

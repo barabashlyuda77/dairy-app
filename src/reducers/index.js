@@ -1,4 +1,4 @@
-import { ADD_ITEM } from '../actions/index.js';
+import { ADD_ITEM, MAKE_ACTIVE } from '../actions/index.js';
 
 const createItem = (value) => {
   return {
@@ -26,6 +26,12 @@ const globalReducer = (state = initialState, action) => {
       const newState = [...state, createItem(action.title)]
       saveItemsToLocalStorage(newState);
       return newState;
+    case MAKE_ACTIVE:
+      return state.map((item) => {
+        const newItem = {...item};
+        newItem.active = newItem.id === action.id;
+        return newItem;
+      });
     default:
       return state
   }

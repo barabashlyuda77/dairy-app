@@ -16,8 +16,6 @@ class AddItem extends Component {
     const title = this.textInput.current.value;
     this.props.addItem(title);
     this.textInput.current.value = '';
-
-    console.log(JSON.parse(localStorage.getItem('items')));
   }
 
   render() {
