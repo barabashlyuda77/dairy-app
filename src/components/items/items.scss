@@ -2,10 +2,13 @@
 @import '../../mixins';
 
 .items-wrapper {
+  @include border-decoration;
+  display: flex;
+  flex-direction: column;
   background-color: $color-white;
   min-height: 523px;
+  max-height: 636px;
   margin-right: 20px;
   flex: 479;
   padding: 20px 15px 20px 30px;
-  @include border-decoration;
 }

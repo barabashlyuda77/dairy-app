@@ -2,8 +2,9 @@
 @import '../../mixins';
 
 .comments-wrapper {
+  @include border-decoration;
   background-color: $color-white;
   flex: 444;
   padding: 20px 18px 14px 18px;
-  @include border-decoration;
+  max-height: 636px;
 }

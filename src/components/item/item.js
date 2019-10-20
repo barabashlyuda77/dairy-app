@@ -23,9 +23,9 @@ const Item = (props) => {
   }
 
   return (
-    <div className="row-wrapper" onClick={clickHandler}>
+    <div className="row-wrapper">
       <div className={lineClass}></div>
-      <div className="item-wrapper">
+      <div className="item-wrapper" onClick={clickHandler}>
         <div className="text-wrapper">
           <p className="item-text">{props.text}</p>
           <Number number={props.number} />
