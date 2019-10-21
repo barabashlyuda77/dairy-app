@@ -12,7 +12,7 @@ const Comments = (props) => {
   return (
     <div className="comments-wrapper">
       <Title
-        titleText="Comments #2"
+        titleText={`Comments #${props.activeItemNumber}`}
       />
       <CommentList comments={props.comments} />
       <AddComment itemId={props.itemId} addComment={props.addComment} />
@@ -24,6 +24,7 @@ const mapStateToProps = (state) => {
   const activeItem = state.find((item) => item.active === true);
 
   return {
+    activeItemNumber: state.indexOf(activeItem) + 1,
     itemId: activeItem ? activeItem.id : null,
     comments: activeItem ? activeItem.comments : []
   }
