@@ -8,6 +8,9 @@ const AddComment = (props) => {
   const typeHandler = (e) => {
     if ((e.key === 'Enter') && (e.ctrlKey === true)) {
       const comment = textArea.current.value;
+      if (!comment) {
+        return;
+      }
       props.addComment(comment, props.itemId)
       textArea.current.value = '';
     }

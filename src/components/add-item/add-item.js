@@ -14,6 +14,9 @@ class AddItem extends Component {
 
   clickHandler = () => {
     const title = this.textInput.current.value;
+    if (!title) {
+      return;
+    }
     this.props.addItem(title);
     this.textInput.current.value = '';
   }

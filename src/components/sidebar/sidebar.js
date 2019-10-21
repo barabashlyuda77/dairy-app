@@ -2,7 +2,7 @@ import React from 'react';
 
 import './sidebar.scss';
 
-const Sidebar = () =>{
+const Sidebar = () => {
   return (
     <div className="sidebar-wrapper">
       <h1>Dairy app</h1>

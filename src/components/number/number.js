@@ -2,7 +2,7 @@ import React from 'react';
 
 import './number.scss';
 
-const Number = (props) =>{
+const Number = (props) => {
   return (
     <div className="number-wrapper">
       {props.number}

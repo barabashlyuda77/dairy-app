@@ -4,7 +4,7 @@ import './comment-list.scss';
 
 import Comment from '../comment/comment.js';
 
-const CommentList = (props) =>{
+const CommentList = (props) => {
   return (
     <div className="comment-list-wrapper">
       {

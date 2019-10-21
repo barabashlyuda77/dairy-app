@@ -44,6 +44,16 @@ const addComment = (state, action) => {
   return newState;
 }
 
+const makeActive = (state, action) => {
+  const newState = state.map((item) => {
+    const newItem = {...item};
+    newItem.active = newItem.id === action.id;
+    return newItem;
+  });
+  saveItemsToLocalStorage(newState);
+  return newState;
+}
+
 const initialState = getItemsFromLocalStorage();
 
 const globalReducer = (state = initialState, action) => {
@@ -51,15 +61,11 @@ const globalReducer = (state = initialState, action) => {
     case ADD_ITEM:
       return addItem(state, action);
     case MAKE_ACTIVE:
-      return state.map((item) => {
-        const newItem = {...item};
-        newItem.active = newItem.id === action.id;
-        return newItem;
-      });
-      case DELETE_ITEM:
-        return deleteItem(state, action);
-      case ADD_COMMENT:
-        return addComment(state, action);
+      return makeActive(state, action);
+    case DELETE_ITEM:
+      return deleteItem(state, action);
+    case ADD_COMMENT:
+      return addComment(state, action);
     default:
       return state
   }
